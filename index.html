@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="ka">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>რესპონსიული ვებ დიზაინი - მენტორული სესია</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e1e5e9;
+            flex-wrap: wrap;
+        }
+
+        .nav-tab {
+            padding: 15px 25px;
+            background: #f8f9fa;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px 10px 0 0;
+            margin: 0 5px;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-tab:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+        }
+
+        .nav-tab.active {
+            background: #007bff;
+            color: white;
+            border-bottom: 3px solid #0056b3;
+        }
+
+        .content-section {
+            display: none;
+            padding: 30px;
+            background: #fff;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #34495e;
+            margin: 25px 0 15px 0;
+            font-size: 1.4em;
+        }
+
+        h4 {
+            color: #2980b9;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            overflow-x: auto;
+            border-left: 4px solid #4299e1;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+
+        .code-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: #1a202c;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .example-box {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 4px solid #48bb78;
+        }
+
+        .theory-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .homework-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 10px 25px rgba(240, 147, 251, 0.3);
+        }
+
+        .demo-navbar {
+            background: #333;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .demo-navbar ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .demo-navbar li {
+            color: white;
+            padding: 10px 15px;
+            background: #555;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+
+        .responsive-demo {
+            background: #f1f3f4;
+            border: 2px dashed #666;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .form-example {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.1);
+        }
+
+        .btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .social-media-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #e74c3c;
+            transition: transform 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* რესპონსიული სტილები */
+        @media (max-width: 1024px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-tab {
+                margin: 5px 0;
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-tab {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .demo-navbar ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .demo-navbar li {
+                text-align: center;
+            }
+
+            .code-block {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .nav-tab {
+                padding: 10px 15px;
+                font-size: 13px;
+            }
+
+            .content-section {
+                padding: 15px;
+            }
+
+            .social-media-tips {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e0e0e0;
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 რესპონსიული ვებ დიზაინი</h1>
+            <p class="subtitle">სრული კურსი თეორიით, მაგალითებითა და პრაქტიკით</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('session-plan')">📋 სესიის გეგმა</button>
+            <button class="nav-tab" onclick="showSection('theory')">📚 თეორია</button>
+            <button class="nav-tab" onclick="showSection('examples')">💡 მაგალითები</button>
+            <button class="nav-tab" onclick="showSection('code')">💻 კოდი</button>
+            <button class="nav-tab" onclick="showSection('homework')">📝 დავალება</button>
+        </div>
+
+        <!-- სესიის გეგმა -->
+        <div id="session-plan" class="content-section active">
+            <h2>📋 მენტორული სესიის გეგმა</h2>
+
+            <div class="theory-box">
+                <h3>🎯 სესიის მიზნები:</h3>
+                <ul>
+                    <li>რესპონსიული დიზაინის ფუნდამენტური პრინციპების გაცნობა</li>
+                    <li>CSS @media queries-ის გამოყენების შესწავლა</li>
+                    <li>HTML ფორმების ელემენტების დეტალური განხილვა</li>
+                    <li>სოციალური მედიის ოპტიმიზაციის ტექნიკების შესწავლა</li>
+                </ul>
+            </div>
+
+            <h3>⏱️ სესიის სტრუქტურა (120 წუთი):</h3>
+
+            <h4>1. შესავალი და თეორიული ნაწილი (30 წუთი)</h4>
+            <ul>
+                <li>რესპონსიული დიზაინის კონცეფცია (10 წუთი)</li>
+                <li>@media queries-ის სინტაქსი და ლოგიკა (10 წუთი)</li>
+                <li>HTML ფორმების ელემენტები (10 წუთი)</li>
+            </ul>
+
+            <h4>2. პრაქტიკული მაგალითები (40 წუთი)</h4>
+            <ul>
+                <li>რესპონსიული ნავიგაციის შექმნა (15 წუთი)</li>
+                <li>ფორმების რესპონსიული დიზაინი (15 წუთი)</li>
+                <li>რესპონსიული ჩექერ ინსტრუმენტების გამოყენება (10 წუთი)</li>
+            </ul>
+
+            <h4>3. სოციალური მედიის ოპტიმიზაცია (30 წუთი)</h4>
+            <ul>
+                <li>Open Graph მეტა ტეგები (15 წუთი)</li>
+                <li>Twitter Card-ები (10 წუთი)</li>
+                <li>საუკეთესო პრაქტიკები (5 წუთი)</li>
+            </ul>
+
+            <h4>4. დავალების განხილვა და Q&A (20 წუთი)</h4>
+            <ul>
+                <li>დავალების დეტალური ახსნა (10 წუთი)</li>
+                <li>კითხვები და პასუხები (10 წუთი)</li>
+            </ul>
+        </div>
+
+        <!-- თეორია -->
+        <div id="theory" class="content-section">
+            <h2>📚 სრული თეორიული მასალა</h2>
+
+            <div class="theory-box">
+                <h3>🌐 რა არის რესპონსიული ვებ დიზაინი?</h3>
+                <p>რესპონსიული ვებ დიზაინი არის მიდგომა, რომელიც უზრუნველყოფს ვებ გვერდების ოპტიმალურ ჩვენებას ყველა
+                    ტიპის მოწყობილობაზე - კომპიუტერიდან დაწყებული, ტაბლეტითა და მობილური ტელეფონით დამთავრებული.</p>
+            </div>
+
+            <h3>📱 ეკრანის რეზოლუციები და Breakpoint-ები</h3>
+            <div class="example-box">
+                <h4>სტანდარტული Breakpoint-ები:</h4>
+                <ul>
+                    <li><strong>Mobile:</strong> 320px - 768px</li>
+                    <li><strong>Tablet:</strong> 768px - 1024px</li>
+                    <li><strong>Desktop:</strong> 1024px - 1200px</li>
+                    <li><strong>Large Desktop:</strong> 1200px+</li>
+                </ul>
+            </div>
+
+            <h3>🎛️ CSS @media Queries</h3>
+            <div class="theory-box">
+                <h4>@media სინტაქსი:</h4>
+                <p><code>@media (პირობა) { CSS წესები }</code></p>
+
+                <h4>ძირითადი Media Features:</h4>
+                <ul>
+                    <li><strong>width:</strong> ეკრანის სიგანე</li>
+                    <li><strong>height:</strong> ეკრანის სიმაღლე</li>
+                    <li><strong>orientation:</strong> ორიენტაცია (portrait/landscape)</li>
+                    <li><strong>resolution:</strong> ეკრანის რეზოლუცია</li>
+                </ul>
+            </div>
+
+            <h3>📝 HTML ფორმის ელემენტები</h3>
+            <div class="example-box">
+                <h4>ძირითადი Input ტიპები:</h4>
+                <ul>
+                    <li><strong>text:</strong> ტექსტური ველი</li>
+                    <li><strong>email:</strong> ელ-ფოსტის ველი</li>
+                    <li><strong>password:</strong> პაროლის ველი</li>
+                    <li><strong>number:</strong> რიცხვითი ველი</li>
+                    <li><strong>tel:</strong> ტელეფონის ნომერი</li>
+                    <li><strong>url:</strong> URL მისამართი</li>
+                    <li><strong>date:</strong> თარიღის არჩევა</li>
+                    <li><strong>file:</strong> ფაილის ატვირთვა</li>
+                </ul>
+            </div>
+
+            <h3>🔧 რესპონსიული ჩექერ ინსტრუმენტები</h3>
+            <div class="theory-box">
+                <h4>პოპულარული ინსტრუმენტები:</h4>
+                <ul>
+                    <li><strong>Browser DevTools:</strong> Chrome, Firefox, Safari-ს ჩაშენებული ინსტრუმენტები</li>
+                    <li><strong>ResponsiveDesignChecker.com:</strong> ონლაინ სერვისი</li>
+                    <li><strong>Am I Responsive:</strong> სწრაფი შემოწმება</li>
+                    <li><strong>BrowserStack:</strong> რეალურ მოწყობილობებზე ტესტირება</li>
+                </ul>
+            </div>
+
+            <h3>📱 სოციალური მედიის ოპტიმიზაცია</h3>
+            <div class="theory-box">
+                <h4>Open Graph მეტა ტეგები:</h4>
+                <p>Facebook-ისა და სხვა სოციალური პლატფორმებისთვის კონტენტის ოპტიმიზაცია</p>
+
+                <h4>Twitter Cards:</h4>
+                <p>Twitter-ისთვის სპეციალური მეტა ინფორმაცია</p>
+
+                <h4>საუკეთესო პრაქტიკები:</h4>
+                <ul>
+                    <li>სურათების ოპტიმალური ზომები</li>
+                    <li>შინაარსის ხარისხიანი აღწერა</li>
+                    <li>სწორი სათაურები და აღწერები</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- მაგალითები -->
+        <div id="examples" class="content-section">
+            <h2>💡 პრაქტიკული მაგალითები</h2>
+
+            <h3>🧭 რესპონსიული ნავიგაცია</h3>
+            <div class="example-box">
+                <p>ქვემოთ მოცემულია მაგალითი რესპონსიული ნავიგაციისა:</p>
+                <div class="demo-navbar">
+                    <ul>
+                        <li>მთავარი</li>
+                        <li>სერვისები</li>
+                        <li>პორტფოლიო</li>
+                        <li>კონტაქტი</li>
+                    </ul>
+                </div>
+                <p><small>ეკრანის ზომის შემცირებისას ნავიგაცია ვერტიკალურად განლაგდება</small></p>
+            </div>
+
+            <h3>📊 რესპონსიული დემო</h3>
+            <div class="responsive-demo">
+                <h4>ეს კონტეინერი ადაპტირდება ეკრანის ზომასთან</h4>
+                <p>შეამცირეთ ბრაუზერის ფანჯარა და დაინახავთ როგორ იცვლება ჩვენება</p>
+            </div>
+
+            <h3>📝 HTML ფორმის მაგალითი</h3>
+            <div class="form-example">
+                <form>
+                    <div class="form-group">
+                        <label for="name">სახელი:</label>
+                        <input type="text" id="name" placeholder="შეიყვანეთ თქვენი სახელი">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">ელ-ფოსტა:</label>
+                        <input type="email" id="email" placeholder="example@email.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">ტელეფონი:</label>
+                        <input type="tel" id="phone" placeholder="+995 555 123 456">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">თემა:</label>
+                        <select id="subject">
+                            <option>ზოგადი კითხვა</option>
+                            <option>ტექნიკური მხარდაჭერა</option>
+                            <option>თანამშრომლობა</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">შეტყობინება:</label>
+                        <textarea id="message" rows="5" placeholder="დაწერეთ თქვენი შეტყობინება აქ..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">გაგზავნა</button>
+                </form>
+            </div>
+
+            <h3>📱 სოციალური მედიის ოპტიმიზაციის რჩევები</h3>
+            <div class="social-media-tips">
+                <div class="tip-card">
+                    <h4>🖼️ სურათების ზომები</h4>
+                    <ul>
+                        <li>Facebook: 1200x630px</li>
+                        <li>Twitter: 1024x512px</li>
+                        <li>LinkedIn: 1200x627px</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h4>📄 მეტა აღწერები</h4>
+                    <ul>
+                        <li>Title: 60 სიმბოლომდე</li>
+                        <li>Description: 160 სიმბოლომდე</li>
+                        <li>ზუსტი და ინფორმაციული</li>
+                    </ul>
+                </div>
+
+                <div class="tip-card">
+                    <h4>⚡ ყურადღება</h4>
+                    <ul>
+                        <li>სწრაფი ჩატვირთვა</li>
+                        <li>მობილურ მოწყობილობებზე ოპტიმიზაცია</li>
+                        <li>ხარისხიანი კონტენტი</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- კოდი -->
+        <div id="code" class="content-section">
+            <h2>💻 სრული კოდის მაგალითები</h2>
+
+            <h3>1. ძირითადი HTML სტრუქტურა</h3>
+            <div class="code-block">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="ka"&gt;
+                &lt;head&gt;
+                &lt;meta charset="UTF-8"&gt;
+                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                &lt;title&gt;რესპონსიული გვერდი&lt;/title&gt;
+
+                &lt;!-- Open Graph მეტა ტეგები --&gt;
+                &lt;meta property="og:title" content="ჩემი რესპონსიული ვებსაიტი"&gt;
+                &lt;meta property="og:description" content="ამ საიტზე იხილავთ რესპონსიული დიზაინის მაგალითებს"&gt;
+                &lt;meta property="og:image" content="https://example.com/image.jpg"&gt;
+                &lt;meta property="og:url" content="https://example.com"&gt;
+
+                &lt;!-- Twitter Cards --&gt;
+                &lt;meta name="twitter:card" content="summary_large_image"&gt;
+                &lt;meta name="twitter:title" content="ჩემი რესპონსიული ვებსაიტი"&gt;
+                &lt;meta name="twitter:description" content="ამ საიტზე იხილავთ რესპონსიული დიზაინის მაგალითებს"&gt;
+                &lt;meta name="twitter:image" content="https://example.com/image.jpg"&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;nav class="navbar"&gt;
+                &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;მთავარი&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#services"&gt;სერვისები&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;კონტაქტი&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;/nav&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
+            </div>
+
+            <h3>2. რესპონსიული CSS</h3>
+            <div class="code-block">
+                /* ძირითადი სტილები */
+                * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                }
+
+                body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                }
+
+                .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+                }
+
+                /* ნავიგაციის სტილები */
+                .navbar {
+                background: #333;
+                padding: 1rem;
+                }
+
+                .navbar ul {
+                list-style: none;
+                display: flex;
+                justify-content: space-around;
+                }
+
+                .navbar a {
+                color: white;
+                text-decoration: none;
+                padding: 10px 15px;
+                }
+
+                /* Tablet სტილები */
+                @media (max-width: 1024px) {
+                .container {
+                max-width: 100%;
+                padding: 15px;
+                }
+
+                .navbar ul {
+                flex-direction: column;
+                gap: 10px;
+                }
+                }
+
+                /* Mobile სტილები */
+                @media (max-width: 768px) {
+                .container {
+                padding: 10px;
+                }
+
+                .navbar ul {
+                flex-direction: column;
+                text-align: center;
+                }
+
+                .navbar li {
+                margin: 5px 0;
+                }
+                }
+
+                /* მცირე მობილური მოწყობილობები */
+                @media (max-width: 480px) {
+                body {
+                font-size: 14px;
+                }
+
+                .navbar {
+                padding: 0.5rem;
+                }
+
+                .navbar a {
+                padding: 8px 12px;
+                font-size: 14px;
+                }
+                }
+
+                /* Landscape ორიენტაცია */
+                @media (orientation: landscape) and (max-height: 500px) {
+                .navbar ul {
+                flex-direction: row;
+                }
+                }
+            </div>
+
+            <h3>3. რესპონსიული ფორმები</h3>
+            <div class="code-block">
+                /* ფორმის ძირითადი სტილები */
+                .form-container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background: #f9f9f9;
+                border-radius: 10px;
+                }
+
+                .form-group {
+                margin-bottom: 20px;
+                }
+
+                .form-group label {
+                display: block;
+                margin-bottom: 8px;
+                font-weight: bold;
+                color: #333;
+                }
+
+                .form-group input,
+                .form-group textarea,
+                .form-group select {
+                width: 100%;
+                padding: 12px;
+                border: 2px solid #ddd;
+                border-radius: 5px;
+                font-size: 16px;
+                transition: border-color 0.3s ease;
+                }
+
+                .form-group input:focus,
+                .form-group textarea:focus,
+                .form-group select:focus {
+                outline: none;
+                border-color: #007bff;
+                box-shadow: 0 0 10px rgba(0,123,255,0.1);
+                }
+
+                /* რესპონსიული ფორმები */
+                @media (max-width: 768px) {
+                .form-container {
+                padding: 15px;
+                margin: 10px;
+                }
+
+                .form-group input,
+                .form-group textarea,
+                .form-group select {
+                font-size: 16px; /* iOS-ზე zoom-ის თავიდან აცილება */
+                padding: 15px;
+                }
+                }
+
+                @media (max-width: 480px) {
+                .form-container {
+                padding: 10px;
+                }
+
+                .form-group {
+                margin-bottom: 15px;
+                }
+                }
+            </div>
+
+            <h3>4. JavaScript ინტერაქტიულობისთვის</h3>
+            <div class="code-block">
+                // რესპონსიული ნავიგაციის toggle
+                function toggleNavbar() {
+                const navbar = document.querySelector('.navbar ul');
+                navbar.classList.toggle('active');
+                }
+
+                // ეკრანის ზომის შემოწმება
+                function checkScreenSize() {
+                const width = window.innerWidth;
+
+                if (width <= 480) { console.log('მობილური მოწყობილობა'); } else if (width <=768) {
+                    console.log('ტაბლეტი'); } else if (width <=1024) { console.log('მცირე დესკტოპი'); } else {
+                    console.log('დიდი ეკრანი'); } } // ეკრანის ზომის ცვლილების მოსმენა window.addEventListener('resize',
+                    checkScreenSize); // ფორმის ვალიდაცია function validateForm() { const
+                    email=document.getElementById('email'); const phone=document.getElementById('phone'); // ელ-ფოსტის
+                    ვალიდაცია const emailPattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/; if (!emailPattern.test(email.value)) {
+                    alert('გთხოვთ შეიყვანოთ სწორი ელ-ფოსტა'); return false; } // ტელეფონის ვალიდაცია (ქართული ფორმატი)
+                    const phonePattern=/^(\+995|995)?[0-9]{9}$/; if (!phonePattern.test(phone.value.replace(/\s/g, ''
+                    ))) { alert('გთხოვთ შეიყვანოთ სწორი ტელეფონის ნომერი'); return false; } return true; } // Touch
+                    events მობილური მოწყობილობებისთვის document.addEventListener('touchstart', function(e) { // Touch
+                    ინტერაქციების დამუშავება }); // Media Query-ების JavaScript-ით შემოწმება const
+                    mediaQuery=window.matchMedia('(max-width: 768px)'); function handleTabletChange(e) { if (e.matches)
+                    { // ტაბლეტის ეკრანზე გამოსაჩენი ფუნქციონალი console.log('ტაბლეტის რეჟიმი აქტიურია'); } else { //
+                    დესკტოპის ეკრანზე გამოსაჩენი ფუნქციონალი console.log('დესკტოპის რეჟიმი აქტიურია'); } }
+                    mediaQuery.addListener(handleTabletChange); handleTabletChange(mediaQuery); </div>
+
+                    <h3>5. სოციალური მედიის Meta Tags</h3>
+                    <div class="code-block">
+                        &lt;!-- Facebook Open Graph --&gt;
+                        &lt;meta property="og:title" content="თქვენი გვერდის სათაური"&gt;
+                        &lt;meta property="og:description" content="გვერდის მოკლე და ინფორმაციული აღწერა"&gt;
+                        &lt;meta property="og:image" content="https://yoursite.com/image.jpg"&gt;
+                        &lt;meta property="og:url" content="https://yoursite.com/page"&gt;
+                        &lt;meta property="og:type" content="website"&gt;
+                        &lt;meta property="og:site_name" content="თქვენი საიტის სახელი"&gt;
+
+                        &lt;!-- Twitter Cards --&gt;
+                        &lt;meta name="twitter:card" content="summary_large_image"&gt;
+                        &lt;meta name="twitter:site" content="@yourusername"&gt;
+                        &lt;meta name="twitter:title" content="თქვენი გვერდის სათაური"&gt;
+                        &lt;meta name="twitter:description" content="გვერდის მოკლე და ინფორმაციული აღწერა"&gt;
+                        &lt;meta name="twitter:image" content="https://yoursite.com/image.jpg"&gt;
+
+                        &lt;!-- LinkedIn --&gt;
+                        &lt;meta property="og:title" content="თქვენი გვერდის სათაური"&gt;
+                        &lt;meta property="og:description" content="პროფესიული აღწერა LinkedIn-ისთვის"&gt;
+                        &lt;meta property="og:image" content="https://yoursite.com/linkedin-image.jpg"&gt;
+
+                        &lt;!-- ზოგადი SEO meta tags --&gt;
+                        &lt;meta name="description" content="გვერდის SEO აღწერა საძიებო სისტემებისთვის"&gt;
+                        &lt;meta name="keywords" content="keyword1, keyword2, keyword3"&gt;
+                        &lt;meta name="author" content="თქვენი სახელი"&gt;
+
+                        &lt;!-- მობილური ოპტიმიზაცია --&gt;
+                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                        &lt;meta name="mobile-web-app-capable" content="yes"&gt;
+                        &lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;
+                    </div>
+            </div>
+
+            <!-- დავალება -->
+            <div id="homework" class="content-section">
+                <h2>📝 საშინაო დავალება</h2>
+
+                <div class="homework-box">
+                    <h3>🎯 ძირითადი დავალება</h3>
+                    <p>შექმენით სრულყოფილი რესპონსიული ვებგვერდი შემდეგი მოთხოვნებით:</p>
+                </div>
+
+                <h3>📋 დავალების დეტალები:</h3>
+
+                <h4>1. HTML სტრუქტურა (25 ქულა)</h4>
+                <div class="example-box">
+                    <ul>
+                        <li>შექმენით semantic HTML5 სტრუქტურა</li>
+                        <li>დაამატეთ სრული Meta tags (Open Graph, Twitter Cards)</li>
+                        <li>შექმენით რეგისტრაციის ფორმა შემდეგი ველებით:
+                            <ul>
+                                <li>სახელი და გვარი (text)</li>
+                                <li>ელ-ფოსტა (email)</li>
+                                <li>ტელეფონის ნომერი (tel)</li>
+                                <li>დაბადების თარიღი (date)</li>
+                                <li>ქალაქი (select with options)</li>
+                                <li>ბიოგრაფია (textarea)</li>
+                                <li>ფოტოს ატვირთვა (file)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <h4>2. CSS დიზაინი (35 ქულა)</h4>
+                <div class="example-box">
+                    <ul>
+                        <li>გამოიყენეთ CSS Grid და/ან Flexbox layout-ებისთვის</li>
+                        <li>შექმენით რესპონსიული ნავიგაცია hamburger menu-ით</li>
+                        <li>დაამატეთ @media queries ყველა ზომისთვის:
+                            <ul>
+                                <li>Mobile: 320px - 768px</li>
+                                <li>Tablet: 768px - 1024px</li>
+                                <li>Desktop: 1024px+</li>
+                            </ul>
+                        </li>
+                        <li>გამოიყენეთ CSS animations და transitions</li>
+                        <li>დაამატეთ hover effects</li>
+                    </ul>
+                </div>
+
+                <h4>3. JavaScript ფუნქციონალი (25 ქულა)</h4>
+                <div class="example-box">
+                    <ul>
+                        <li>მობილური მენიუს toggle ფუნქცია</li>
+                        <li>ფორმის ვალიდაცია JavaScript-ით</li>
+                        <li>ეკრანის ზომის შემოწმება და შესაბამისი ცვლილებები</li>
+                        <li>Touch events მობილური მოწყობილობებისთვის</li>
+                        <li>Smooth scrolling navigation-ისთვის</li>
+                    </ul>
+                </div>
+
+                <h4>4. სოციალური მედიის ოპტიმიზაცია (15 ქულა)</h4>
+                <div class="example-box">
+                    <ul>
+                        <li>სწორი Open Graph tags</li>
+                        <li>Twitter Card configuration</li>
+                        <li>SEO ოპტიმიზაცია</li>
+                        <li>Social sharing buttons</li>
+                    </ul>
+                </div>
+
+                <h3>🛠️ ტექნიკური მოთხოვნები:</h3>
+                <div class="theory-box">
+                    <ul>
+                        <li>კოდი უნდა იყოს კომენტარებით აღჭურვილი</li>
+                        <li>ვალიდური HTML5 და CSS3</li>
+                        <li>Cross-browser compatibility</li>
+                        <li>Mobile-first approach</li>
+                        <li>Accessibility (ARIA labels, proper contrast)</li>
+                        <li>Performance optimization</li>
+                    </ul>
+                </div>
+
+                <h3>📊 შეფასების კრიტერიუმები:</h3>
+                <div class="example-box">
+                    <h4>A დონე (90-100 ქულა):</h4>
+                    <ul>
+                        <li>ყველა მოთხოვნა სრულყოფილად შესრულებული</li>
+                        <li>კრეატიული და უნიკალური დიზაინი</li>
+                        <li>გამორჩეული პერფორმანსი</li>
+                        <li>დამატებითი ფუნქციების იმპლემენტაცია</li>
+                    </ul>
+
+                    <h4>B დონე (80-89 ქულა):</h4>
+                    <ul>
+                        <li>ძირითადი მოთხოვნები შესრულებული</li>
+                        <li>კარგი დიზაინი და ფუნქციონალი</li>
+                        <li>მცირე ხარვეზები</li>
+                    </ul>
+
+                    <h4>C დონე (70-79 ქულა):</h4>
+                    <ul>
+                        <li>ძირითადი ფუნქციონალი მუშაობს</li>
+                        <li>რესპონსიული დიზაინი ნაწილობრივ</li>
+                        <li>ზოგიერთი მოთხოვნა შეუსრულებელი</li>
+                    </ul>
+                </div>
+
+                <h3>⏰ ვადები:</h3>
+                <div class="homework-box">
+                    <ul>
+                        <li><strong>ძირითადი ვარიანტის წარმოდგენა:</strong> 1 კვირა</li>
+                        <li><strong>სრული პროექტის დასრულება:</strong> 2 კვირა</li>
+                        <li><strong>პრეზენტაცია:</strong> მომდევნო სესიაზე</li>
+                    </ul>
+                </div>
+
+                <h3>💡 რჩევები წარმატებისთვის:</h3>
+                <div class="example-box">
+                    <ol>
+                        <li><strong>დაიწყეთ მოკლე ეტაპებით:</strong> თავდაპირველად შექმენით ძირითადი HTML სტრუქტურა</li>
+                        <li><strong>Mobile-first მიდგომა:</strong> ჯერ მობილურისთვის დიზაინი, შემდეგ დესკტოპისთვის</li>
+                        <li><strong>ტესტირება:</strong> ხშირად შეამოწმეთ სხვადასხვა მოწყობილობაზე</li>
+                        <li><strong>კოდის ორგანიზაცია:</strong> გამოიყენეთ კომენტარები და ლოგიკური სტრუქტურა</li>
+                        <li><strong>რესურსები:</strong> გამოიყენეთ MDN, W3Schools და სხვა რესურსები</li>
+                    </ol>
+                </div>
+
+                <h3>🔍 გამოყენებადი რესურსები:</h3>
+                <div class="theory-box">
+                    <ul>
+                        <li><strong>Fonts:</strong> Google Fonts</li>
+                        <li><strong>Icons:</strong> Font Awesome, Feather Icons</li>
+                        <li><strong>Images:</strong> Unsplash, Pexels</li>
+                        <li><strong>CSS Framework:</strong> Bootstrap (optional)</li>
+                        <li><strong>Testing:</strong> BrowserStack, ResponsiveDesignChecker</li>
+                    </ul>
+                </div>
+
+                <h3>📤 დავალების ჩაბარება:</h3>
+                <div class="homework-box">
+                    <p>დავალება ჩააბარეთ შემდეგი ფორმატით:</p>
+                    <ul>
+                        <li>ZIP ფაილი ყველა კოდით</li>
+                        <li>README.md ფაილი პროექტის აღწერით</li>
+                        <li>Screenshots სხვადასხვა მოწყობილობიდან</li>
+                        <li>შემოწმების ინსტრუმენტების ნაჩვენები ტესტები</li>
+                    </ul>
+                </div>
+
+                <div class="example-box" style="background: #e8f5e8; border-color: #4caf50;">
+                    <h4>🏆 ბონუს ქულები (+10 ქულა):</h4>
+                    <ul>
+                        <li>PWA (Progressive Web App) ფუნქციონალის დამატება</li>
+                        <li>Dark/Light theme toggle</li>
+                        <li>Advanced animations და micro-interactions</li>
+                        <li>გამორჩეული UX/UI დიზაინი</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // ნავიგაციის ფუნქციონალი
+            function showSection(sectionId) {
+                // ყველა სექციის დამალვა
+                const sections = document.querySelectorAll('.content-section');
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // ყველა tab-ის deactivate
+                const tabs = document.querySelectorAll('.nav-tab');
+                tabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+
+                // არჩეული სექციის ჩვენება
+                document.getElementById(sectionId).classList.add('active');
+                event.target.classList.add('active');
+
+                // პროგრეს ბარის განახლება
+                updateProgress();
+            }
+
+            // პროგრეს ბარის განახლება
+            function updateProgress() {
+                const activeTab = document.querySelector('.nav-tab.active');
+                const allTabs = document.querySelectorAll('.nav-tab');
+                const activeIndex = Array.from(allTabs).indexOf(activeTab);
+                const progress = ((activeIndex + 1) / allTabs.length) * 100;
+
+                document.getElementById('progressBar').style.width = progress + '%';
+            }
+
+            // ფორმის ვალიდაცია (მაგალითისთვის)
+            function validateDemoForm() {
+                const name = document.getElementById('name');
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
+
+                let isValid = true;
+
+                // სახელის შემოწმება
+                if (name.value.length < 2) {
+                    name.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else {
+                    name.style.borderColor = '#27ae60';
+                }
+
+                // ელ-ფოსტის შემოწმება
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailPattern.test(email.value)) {
+                    email.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else {
+                    email.style.borderColor = '#27ae60';
+                }
+
+                return isValid;
+            }
+
+            // ფორმის ველების რეალურ დროში ვალიდაცია
+            document.addEventListener('DOMContentLoaded', function () {
+                const inputs = document.querySelectorAll('input, textarea, select');
+
+                inputs.forEach(input => {
+                    input.addEventListener('blur', validateDemoForm);
+                    input.addEventListener('focus', function () {
+                        this.style.borderColor = '#007bff';
+                    });
+                });
+
+                // თავდაპირველად პროგრეს ბარის განახლება
+                updateProgress();
+            });
+
+            // ეკრანის ზომის მონიტორინგი და ინფორმაციის ჩვენება
+            function showScreenInfo() {
+                const width = window.innerWidth;
+                let deviceType = '';
+
+                if (width <= 480) {
+                    deviceType = 'მობილური (480px ან ნაკლები)';
+                } else if (width <= 768) {
+                    deviceType = 'მცირე ტაბლეტი (481px - 768px)';
+                } else if (width <= 1024) {
+                    deviceType = 'ტაბლეტი/მცირე ლეპტოპი (769px - 1024px)';
+                } else {
+                    deviceType = 'დესკტოპი (1024px-ზე მეტი)';
+                }
+
+                // ინფორმაციის ჩვენება კონსოლში (განვითარების მიზნებისთვის)
+                console.log(`ეკრანის ზომა: ${width}px - ${deviceType}`);
+            }
+
+            // ეკრანის ზომის ცვლილების მოსმენა
+            window.addEventListener('resize', showScreenInfo);
+            window.addEventListener('load', showScreenInfo);
+
+            // Smooth scrolling ანიმაცია
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        </script>
+</body>
+
+</html>
