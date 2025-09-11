@@ -118,7 +118,7 @@ h3 {
 }
 
 h4 {
-  color: #2980b9;
+  color: #4d657f;
   margin: 20px 0 10px 0;
   font-size: 1.2em;
 }
@@ -133,6 +133,7 @@ h4 {
   border-left: 4px solid #4299e1;
   font-family: "Courier New", monospace;
   position: relative;
+  white-space: pre-wrap;
 }
 
 .code-block::before {
@@ -142,7 +143,7 @@ h4 {
   left: 0;
   right: 0;
   height: 30px;
-  background: #1a202c;
+  /* background: #1a202c; */
   border-radius: 8px 8px 0 0;
 }
 
@@ -156,7 +157,7 @@ h4 {
 }
 
 .theory-box {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #a0b1fa 0%, #c58bff 100%);
   color: white;
   padding: 25px;
   border-radius: 10px;
@@ -326,6 +327,7 @@ h4 {
   .code-block {
     padding: 15px;
     font-size: 14px;
+    white-space: pre-wrap;
   }
 }
 
