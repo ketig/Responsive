@@ -77,32 +77,143 @@
 
             <div class="theory-box">
                 <h3>🌐 რა არის რესპონსიული ვებ დიზაინი?</h3>
-                <p>რესპონსიული ვებ დიზაინი არის მიდგომა, რომელიც უზრუნველყოფს ვებ გვერდების ოპტიმალურ ჩვენებას ყველა
-                    ტიპის მოწყობილობაზე - კომპიუტერიდან დაწყებული, ტაბლეტითა და მობილური ტელეფონით დამთავრებული.</p>
+                <p>რესპონსიული ვებ დიზაინი არის მიდგომა ვებ განვითარებაში, რომელიც ქმნის დინამიურ ცვლილებებს ვებსაიტის
+                    გარეგნობაში, დამოკიდებულებით მოწყობილობის ეკრანის ზომასა და ორიენტაციაზე. ძირითადი მიზანია ისეთი ვებ
+                    გვერდების შექმნა, რომლებიც ავტომატურად ამოიცნობენ მომხმარებლის ეკრანის ზომას და ორიენტაციას და
+                    შესაბამისად ცვლიან განლაგებას.</p>
+            </div>
+
+            <div class="theory-box">
+                <h3>🎯 რესპონსიული დიზაინის ძირითადი პრინციპები</h3>
+                <div class="example-box">
+                    <h4>1. მოქნილი ბადე სისტემები (Flexible Grid Systems)</h4>
+                    <p>გამოიყენეთ ფარდობითი ერთეულები (პროცენტები) ფიქსირებული პიქსელების ნაცვლად</p>
+
+                    <h4>2. მოქნილი სურათები და მედია (Flexible Images and Media)</h4>
+                    <p>სურათები და ვიდეოები უნდა მასშტაბირდებოდეს განლაგების შესაბამისად</p>
+
+                    <h4>3. CSS Media Queries</h4>
+                    <p>განსხვავებული სტილების გამოყენება მოწყობილობის მახასიათებლების მიხედვით</p>
+                </div>
+            </div>
+
+            <div class="theory-box">
+                <h3>✅ რესპონსიული დიზაინის უპირატესობები</h3>
+                <ul>
+                    <li><strong>გაუმჯობესებული მომხმარებლის გამოცდილება</strong> ყველა მოწყობილობაზე</li>
+                    <li><strong>უკეთესი SEO რანგი</strong> (Google ამაღლებს მობილურ-თავისუფალ საიტებს)</li>
+                    <li><strong>ეფექტიანი ღირებულება</strong> (ერთი ვებსაიტი მუშაობს ყველა მოწყობილობაზე)</li>
+                    <li><strong>მარტივი მოვლა-შენახვა</strong></li>
+                    <li><strong>მომავლისთვის მზა დიზაინი</strong></li>
+                </ul>
             </div>
 
             <h3>📱 ეკრანის რეზოლუციები და Breakpoint-ები</h3>
+
             <div class="example-box">
-                <h4>სტანდარტული Breakpoint-ები:</h4>
+                <h4>📱 მობილური მოწყობილობები:</h4>
                 <ul>
-                    <li><strong>Mobile:</strong> 320px - 768px</li>
-                    <li><strong>Tablet:</strong> 768px - 1024px</li>
-                    <li><strong>Desktop:</strong> 1024px - 1200px</li>
-                    <li><strong>Large Desktop:</strong> 1200px+</li>
+                    <li><strong>iPhone SE:</strong> 375x667px</li>
+                    <li><strong>iPhone 12/13:</strong> 390x844px</li>
+                    <li><strong>iPhone 14 Pro Max:</strong> 430x932px</li>
+                    <li><strong>Samsung Galaxy S21:</strong> 360x800px</li>
+                    <li><strong>Google Pixel 5:</strong> 393x851px</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>📟 ტაბლეტები:</h4>
+                <ul>
+                    <li><strong>iPad:</strong> 768x1024px</li>
+                    <li><strong>iPad Pro:</strong> 1024x1366px</li>
+                    <li><strong>Samsung Galaxy Tab:</strong> 800x1280px</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>🖥️ დესკტოპები:</h4>
+                <ul>
+                    <li><strong>HD:</strong> 1366x768px</li>
+                    <li><strong>Full HD:</strong> 1920x1080px</li>
+                    <li><strong>4K:</strong> 3840x2160px</li>
+                </ul>
+            </div>
+
+            <div class="theory-box">
+                <h4>🎯 სტანდარტული Breakpoint-ები:</h4>
+                <ul>
+                    <li><strong>ძალიან პატარა მოწყობილობები (ტელეფონები):</strong> max-width: 575px</li>
+                    <li><strong>პატარა მოწყობილობები (ლანდშაფტ ტელეფონები):</strong> min-width: 576px</li>
+                    <li><strong>საშუალო მოწყობილობები (ტაბლეტები):</strong> min-width: 768px</li>
+                    <li><strong>დიდი მოწყობილობები (დესკტოპები):</strong> min-width: 992px</li>
+                    <li><strong>ძალიან დიდი მოწყობილობები (დიდი დესკტოპები):</strong> min-width: 1200px</li>
                 </ul>
             </div>
 
             <h3>🎛️ CSS @media Queries</h3>
             <div class="theory-box">
-                <h4>@media სინტაქსი:</h4>
-                <p><code>@media (პირობა) { CSS წესები }</code></p>
+                <h4>რა არის Media Queries?</h4>
+                <p>Media Queries არის CSS ტექნიკა, რომელიც საშუალებას გაძლევთ განსხვავებული სტილები გამოიყენოთ
+                    სხვადასხვა მედია ტიპებისა და პირობებისთვის, როგორიცაა ეკრანის ზომა, მოწყობილობის ორიენტაცია,
+                    რეზოლუცია და სხვა.</p>
+
+                <h4>ძირითადი სინტაქსი:</h4>
+                <p><code>@media media-type and (condition) { /* CSS წესები */ }</code></p>
+
+                <h4>ყველაზე გავრცელებული Media ტიპები:</h4>
+                <ul>
+                    <li><strong>screen:</strong> კომპიუტერის ეკრანები, ტაბლეტები, სმარტფონები</li>
+                    <li><strong>print:</strong> პრინტერები და ბეჭდვის გადახედვა</li>
+                    <li><strong>speech:</strong> ეკრანის წამკითხველები</li>
+                    <li><strong>all:</strong> ყველა მედია ტიპი (ნაგულისხმევი)</li>
+                </ul>
 
                 <h4>ძირითადი Media Features:</h4>
                 <ul>
-                    <li><strong>width:</strong> ეკრანის სიგანე</li>
-                    <li><strong>height:</strong> ეკრანის სიმაღლე</li>
+                    <li><strong>width / min-width / max-width:</strong> ეკრანის სიგანე</li>
+                    <li><strong>height / min-height / max-height:</strong> ეკრანის სიმაღლე</li>
                     <li><strong>orientation:</strong> ორიენტაცია (portrait/landscape)</li>
                     <li><strong>resolution:</strong> ეკრანის რეზოლუცია</li>
+                    <li><strong>aspect-ratio:</strong> განიერების თანაფარდობა</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>Mobile-First მიდგომის მაგალითი:</h4>
+                <pre><code>/* ძირითადი სტილები მობილურისთვის */
+.container {
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* ტაბლეტისთვის */
+@media screen and (min-width: 768px) {
+    .container {
+        padding: 20px;
+        font-size: 16px;
+    }
+}
+
+/* დესკტოპისთვის */
+@media screen and (min-width: 1024px) {
+    .container {
+        padding: 40px;
+        font-size: 18px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}</code></pre>
+            </div>
+
+            <h3>🧭 რესპონსიული ნავიგაცია</h3>
+            <div class="theory-box">
+                <h4>რესპონსიული ნავიგაციის ძირითადი მახასიათებლები:</h4>
+                <ul>
+                    <li><strong>დესკტოპზე:</strong> ჰორიზონტალური მენიუ</li>
+                    <li><strong>მობილურზე:</strong> ჰამბურგერ მენიუ (სამ ხაზიანი ღილაკი)</li>
+                    <li><strong>Touch-Friendly:</strong> საკმარისი ზომის ღილაკები (მინიმუმ 44px)</li>
+                    <li><strong>Smooth Transitions:</strong> გლუვი ანიმაციები</li>
+                    <li><strong>Accessibility:</strong> კლავიატურული ნავიგაცია</li>
                 </ul>
             </div>
 
@@ -110,41 +221,165 @@
             <div class="example-box">
                 <h4>ძირითადი Input ტიპები:</h4>
                 <ul>
-                    <li><strong>text:</strong> ტექსტური ველი</li>
-                    <li><strong>email:</strong> ელ-ფოსტის ველი</li>
-                    <li><strong>password:</strong> პაროლის ველი</li>
-                    <li><strong>number:</strong> რიცხვითი ველი</li>
-                    <li><strong>tel:</strong> ტელეფონის ნომერი</li>
-                    <li><strong>url:</strong> URL მისამართი</li>
+                    <li><strong>text:</strong> ზოგადი ტექსტური შეყვანა</li>
+                    <li><strong>email:</strong> ელ-ფოსტის მისამართები (ჩართული ვალიდაციით)</li>
+                    <li><strong>tel:</strong> ტელეფონის ნომრები</li>
+                    <li><strong>password:</strong> პაროლის ველები (ტექსტი ფარულია)</li>
+                    <li><strong>number:</strong> რიცხვითი შეყვანა</li>
                     <li><strong>date:</strong> თარიღის არჩევა</li>
+                    <li><strong>time:</strong> დროის არჩევა</li>
+                    <li><strong>url:</strong> ვებსაიტის URL-ები</li>
+                    <li><strong>search:</strong> ძიების ველები</li>
                     <li><strong>file:</strong> ფაილის ატვირთვა</li>
+                </ul>
+            </div>
+
+            <div class="theory-box">
+                <h4>მნიშვნელოვანი Attributes:</h4>
+                <ul>
+                    <li><strong>required:</strong> ველს სავალდებულოს ხდის</li>
+                    <li><strong>placeholder:</strong> ანიშნებს დახმარების ტექსტს</li>
+                    <li><strong>autocomplete:</strong> ჩართავს ბრაუზერის ავტოშევსებას</li>
+                    <li><strong>pattern:</strong> Regex ვალიდაციის ნიმუში</li>
+                    <li><strong>min/max:</strong> რიცხვითი შეყვანისთვის</li>
+                    <li><strong>maxlength:</strong> მაქსიმალური სიმბოლოების ლიმიტი</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>მობილურ-ანგარიშვალდებული ფორმები:</h4>
+                <ul>
+                    <li><strong>font-size: 16px:</strong> თავიდან აცილება iOS-ზე Zoom-ს</li>
+                    <li><strong>Touch Targets:</strong> მინიმუმ 44px ზომის ღილაკები</li>
+                    <li><strong>Proper Input Types:</strong> სწორი ვირტუალური კლავიატურისთვის</li>
+                    <li><strong>Clear Labels:</strong> მკაფიო და გასაგები ეტიკეტები</li>
                 </ul>
             </div>
 
             <h3>🔧 რესპონსიული ჩექერ ინსტრუმენტები</h3>
             <div class="theory-box">
-                <h4>პოპულარული ინსტრუმენტები:</h4>
+                <h4>🌐 ბრაუზერის Developer Tools:</h4>
                 <ul>
-                    <li><strong>Browser DevTools:</strong> Chrome, Firefox, Safari-ს ჩაშენებული ინსტრუმენტები</li>
-                    <li><strong>ResponsiveDesignChecker.com:</strong> ონლაინ სერვისი</li>
-                    <li><strong>Am I Responsive:</strong> სწრაფი შემოწმება</li>
-                    <li><strong>BrowserStack:</strong> რეალურ მოწყობილობებზე ტესტირება</li>
+                    <li><strong>Chrome DevTools:</strong> F12 → მოწყობილობის აიკონი</li>
+                    <li><strong>Firefox Developer Tools:</strong> F12 → Responsive Design Mode</li>
+                    <li><strong>Safari Web Inspector:</strong> Option+Cmd+I → Responsive Design Mode</li>
+                    <li><strong>Edge DevTools:</strong> F12 → Device emulation</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>🆓 უფასო ონლაინ ინსტრუმენტები:</h4>
+                <ul>
+                    <li><strong>Google Mobile-Friendly Test:</strong> tests.googlemobiletest.dev</li>
+                    <li><strong>Responsive Design Checker:</strong> responsivedesignchecker.com</li>
+                    <li><strong>Am I Responsive:</strong> ami.responsivedesign.is</li>
+                    <li><strong>Screenfly:</strong> quirktools.com/screenfly</li>
+                    <li><strong>Mobile Test:</strong> mobiletest.me</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>💰 ფასიანი ინსტრუმენტები:</h4>
+                <ul>
+                    <li><strong>BrowserStack:</strong> კროს-ბრაუზერ ტესტირება რეალურ მოწყობილობებზე</li>
+                    <li><strong>LambdaTest:</strong> ცოცხალი ინტერაქტიული ტესტირება</li>
+                    <li><strong>Sauce Labs:</strong> ავტომატიზებული და ხელნაკეთი ტესტირება</li>
+                </ul>
+            </div>
+
+            <div class="theory-box">
+                <h4>✅ ტესტირების Checklist:</h4>
+                <ul>
+                    <li>ნავიგაციის ფუნქციონირება მობილურზე</li>
+                    <li>ტექსტის წასაკითხაობა (მინიმუმ 16px მობილურზე)</li>
+                    <li>Touch Target-ები (მინიმუმ 44px)</li>
+                    <li>სურათებისა და ვიდეოების მასშტაბირება</li>
+                    <li>ფორმების გამოყენებადობა</li>
+                    <li>ჩატვირთვის სიჩქარე სხვადასხვა კავშირზე</li>
+                    <li>Landscape/Portrait ორიენტაციები</li>
                 </ul>
             </div>
 
             <h3>📱 სოციალური მედიის ოპტიმიზაცია</h3>
             <div class="theory-box">
-                <h4>Open Graph მეტა ტეგები:</h4>
-                <p>Facebook-ისა და სხვა სოციალური პლატფორმებისთვის კონტენტის ოპტიმიზაცია</p>
+                <h4>🌍 Open Graph მეტა ტეგები (Facebook, LinkedIn):</h4>
+                <p>Open Graph ტეგები საშუალებას აძლევს ვებსაიტს კონტროლი მოახდინოს იმაზე, თუ როგორ გამოიყურება კონტენტი,
+                    როცა ის იზიარება სოციალური მედიის პლატფორმებზე.</p>
 
-                <h4>Twitter Cards:</h4>
-                <p>Twitter-ისთვის სპეციალური მეტა ინფორმაცია</p>
-
-                <h4>საუკეთესო პრაქტიკები:</h4>
                 <ul>
-                    <li>სურათების ოპტიმალური ზომები</li>
-                    <li>შინაარსის ხარისხიანი აღწერა</li>
-                    <li>სწორი სათაურები და აღწერები</li>
+                    <li><strong>og:title:</strong> გვერდის სათაური</li>
+                    <li><strong>og:description:</strong> კონტენტის მოკლე აღწერა</li>
+                    <li><strong>og:image:</strong> სურათის URL</li>
+                    <li><strong>og:url:</strong> გვერდის URL</li>
+                    <li><strong>og:type:</strong> კონტენტის ტიპი (website, article და ა.შ.)</li>
+                </ul>
+            </div>
+
+            <div class="theory-box">
+                <h4>🐦 Twitter Card მეტა ტეგები:</h4>
+                <p>Twitter Cards საშუალებას აძლევს Twitter-ს რომ ლამაზად აჩვენოს თქვენი ვებსაიტის კონტენტი Tweet-ებში.
+                </p>
+
+                <ul>
+                    <li><strong>twitter:card:</strong> ბარათის ტიპი</li>
+                    <li><strong>twitter:site:</strong> საიტის Twitter მომხმარებელი</li>
+                    <li><strong>twitter:title:</strong> კონტენტის სათაური</li>
+                    <li><strong>twitter:description:</strong> კონტენტის აღწერა</li>
+                    <li><strong>twitter:image:</strong> სურათის URL</li>
+                </ul>
+            </div>
+
+            <div class="example-box">
+                <h4>🖼️ სურათების სპეციფიკაციები:</h4>
+
+                <h5>Facebook:</h5>
+                <ul>
+                    <li><strong>გაზიარებული სურათები:</strong> 1200 x 630 პიქსელი</li>
+                    <li><strong>პროფილის სურათები:</strong> 180 x 180 პიქსელი</li>
+                    <li><strong>კავერ ფოტოები:</strong> 820 x 312 პიქსელი</li>
+                </ul>
+
+                <h5>Instagram:</h5>
+                <ul>
+                    <li><strong>კვადრატული პოსტები:</strong> 1080 x 1080 პიქსელი</li>
+                    <li><strong>პორტრეტ პოსტები:</strong> 1080 x 1350 პიქსელი</li>
+                    <li><strong>Stories:</strong> 1080 x 1920 პიქსელი</li>
+                </ul>
+
+                <h5>Twitter:</h5>
+                <ul>
+                    <li><strong>In-stream ფოტოები:</strong> 1200 x 675 პიქსელი</li>
+                    <li><strong>Header სურათები:</strong> 1500 x 500 პიქსელი</li>
+                </ul>
+
+                <h5>LinkedIn:</h5>
+                <ul>
+                    <li><strong>გაზიარებული სურათები:</strong> 1200 x 627 პიქსელი</li>
+                    <li><strong>კომპანიის ლოგო:</strong> 300 x 300 პიქსელი</li>
+                </ul>
+            </div>
+
+            <div class="theory-box">
+                <h4>🎯 საუკეთესო პრაქტიკები:</h4>
+                <ul>
+                    <li><strong>სურათების ოპტიმიზაცია:</strong> გამოიყენეთ სწორი ზომები თითოეული პლატფორმისთვის</li>
+                    <li><strong>ხარისხიანი კონტენტი:</strong> შექმენით მიმზიდველი სათაურები და აღწერები</li>
+                    <li><strong>ბრენდინგი:</strong> შეინარჩუნეთ თანმიმდევრულობა ყველა პლატფორმაზე</li>
+                    <li><strong>A/B ტესტირება:</strong> შეამოწმეთ რა მუშაობს უკეთ თქვენი აუდიტორიისთვის</li>
+                    <li><strong>ანალიტიკა:</strong> ადევნეთ თვალი engagement მეტრიკებს</li>
+                </ul>
+            </div>
+
+            <div class="theory-box">
+                <h4>🔍 Schema.org Structured Data:</h4>
+                <p>Structured Data საშუალებას აძლევს საძიებო სისტემებს უკეთ გაიგონ თქვენი ვებსაიტის კონტენტი და აჩვენონ
+                    მდიდარი snippet-ები საძიებო შედეგებში.</p>
+
+                <ul>
+                    <li><strong>Article Schema:</strong> სტატიებისა და ბლოგ პოსტებისთვის</li>
+                    <li><strong>Organization Schema:</strong> ბიზნეს ინფორმაციისთვის</li>
+                    <li><strong>Product Schema:</strong> პროდუქტების ინფორმაციისთვის</li>
+                    <li><strong>LocalBusiness Schema:</strong> ლოკალური ბიზნესებისთვის</li>
                 </ul>
             </div>
         </div>
